@@ -1,0 +1,48 @@
+﻿@model Slime.ViewModels.VehicleViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div data-bind="visible: !saveCompleted()">
+    <div class="col-md-offset-2 col-md-8">
+        <h2>@ViewBag.Title</h2>
+        <form action="/Vehicles/Create" method="post" class="form-inline" novalidate="novalidate" data-bind="submit: validateAndSave">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Vehicle</legend>
+
+                <div class="form-group col-md-6">
+                    <label for="Name">
+                        <span>Name</span>
+                        <input type="text" id="Name" name="Name" class="form-control col-md-3" data-val="true" data-bind="value: vehicle.name" />
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </label>
+                </div>
+
+
+                <p></p>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Rank, htmlAttributes: new { @class = "col-md-3 control-label" })
+                    <input type="text" id="Rank" name="Rank" class="form-control" data-val="true" data-bind="value: vehicle.rank" />
+                    @Html.ValidationMessageFor(m => m.Rank, "", new { @class = "text-danger" })
+                </div>
+
+
+                @*                <div class="form-group">
+                    @Html.LabelFor(m => m.HP, htmlAttributes: new { @class = "control-label" })
+                    <input type="text" id="HP" name="HP" class="form-control" data-val="true" data-bind="value: vehicle.hp" />
+                    @Html.ValidationMessageFor(m => m.HP, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DR, htmlAttributes: new { @class = "control-label" })
+                    <input type="text" id="DR" name="DR" class="form-control" data-val="true" data-bind="value: vehicle.dr" />
+                    @Html.ValidationMessageFor(m => m.DR, "", new { @class = "text-danger" })
+                </div>*@
+            </fieldset>
+        </form>
+    </div>
+</div>

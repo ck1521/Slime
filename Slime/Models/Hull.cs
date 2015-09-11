@@ -6,12 +6,11 @@ using System.Web;
 
 namespace Slime.Models
 {
-    public class Book
+    public class Hull
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int AuthorId { get; set; }
-        public string Title { get; set; }
-        public virtual Author Author { get; set; }
+        public string Name { get; set; }
+        public int TestNum { get; set; }
     }
 }

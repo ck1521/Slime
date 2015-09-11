@@ -7,15 +7,17 @@ using System.Web;
 
 namespace Slime.DAL
 {
-    public class BookContext : DbContext
+    public class VehicleContext : DbContext
     {
-        public BookContext()
+        public VehicleContext()
             : base("DefaultConnection")
         {
         }
 
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Author> Authors { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Engine> Engines { get; set; }
+        public DbSet<Hull> Hulls { get; set; }
+
 
     }
 }
