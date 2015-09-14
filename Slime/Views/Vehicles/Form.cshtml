@@ -1,4 +1,5 @@
 ﻿@model Slime.ViewModels.VehicleViewModel
+@using Slime.Extensions
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,42 +8,56 @@
 <div data-bind="visible: !saveCompleted()">
     <div class="col-md-offset-2 col-md-8">
         <h2>@ViewBag.Title</h2>
-        <form action="/Vehicles/Create" method="post" class="form-inline" novalidate="novalidate" data-bind="submit: validateAndSave">
+        <form action="/Vehicles/Create" method="post" class="form-inline" novalidate="novalidate" data-bind="submit: submit">
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
 
             <fieldset>
                 <legend>Vehicle</legend>
 
-                <div class="form-group col-md-6">
-                    <label for="Name">
-                        <span>Name</span>
-                        <input type="text" id="Name" name="Name" class="form-control col-md-3" data-val="true" data-bind="value: vehicle.name" />
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
-                    </label>
+                <pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+
+                <div class="form-group col-md-5">
+                    <label for="Name" class="control-label col-md-2 grid">Name</label>
+                    <input type="text" id="Name" name="Name" class="form-control" data-val="true" data-bind="value: vehicle.name" />
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                 </div>
-
-
-                <p></p>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Rank, htmlAttributes: new { @class = "col-md-3 control-label" })
+                
+                <div class="form-group col-md-5">
+                    <label for="Rank" class="ontrol-label col-md-2 grid">Rank</label>
                     <input type="text" id="Rank" name="Rank" class="form-control" data-val="true" data-bind="value: vehicle.rank" />
                     @Html.ValidationMessageFor(m => m.Rank, "", new { @class = "text-danger" })
                 </div>
 
-
-                @*                <div class="form-group">
-                    @Html.LabelFor(m => m.HP, htmlAttributes: new { @class = "control-label" })
-                    <input type="text" id="HP" name="HP" class="form-control" data-val="true" data-bind="value: vehicle.hp" />
-                    @Html.ValidationMessageFor(m => m.HP, "", new { @class = "text-danger" })
+                <div class="col-md-12 linebr"></div>
+                
+                <div class="form-group col-md-5">
+                    <label for="FP" class="ontrol-label col-md-2 grid">FP</label>
+                    <input type="text" id="FP" name="FP" class="form-control" data-val="true" data-bind="value: vehicle.hp" />
+                    @Html.ValidationMessageFor(m => m.FP, "", new { @class = "text-danger" })
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(m => m.DR, htmlAttributes: new { @class = "control-label" })
+                <div class="form-group col-md-5">
+                    <label for="DR" class="ontrol-label col-md-2 grid">DR</label>
                     <input type="text" id="DR" name="DR" class="form-control" data-val="true" data-bind="value: vehicle.dr" />
                     @Html.ValidationMessageFor(m => m.DR, "", new { @class = "text-danger" })
-                </div>*@
+                </div>
+
+                <select class="form-control" data-bind="options:engines, optionsText:'name', optionsValue:'Id'">
+                </select>
+
+                <input type="submit" class="btn btn-default" value="Create" data-bind="visible:!sending()" />
             </fieldset>
         </form>
     </div>
 </div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("/Scripts/ViewModel/VehicleViewModel.js")
+
+    <script>
+        var viewModel = new VehicleViewModel(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(viewModel);
+    </script>
+}

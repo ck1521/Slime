@@ -1,6 +1,12 @@
 body {
   font-size: 1.6em;
 }
-label {
-  width: 30%;
+label.grid {
+  float: none;
+}
+div.linebr {
+  height: 10px;
+}
+.body-content {
+  margin-top: 40px;
 }

@@ -15,7 +15,7 @@
     <AssemblyName>Slime</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -142,6 +142,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="DAL\VehicleContext.cs" />
+    <Compile Include="DAL\VehicleInitializer.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -152,6 +153,7 @@
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Services\QueryUtility.cs" />
     <Compile Include="Services\VehicleService.cs" />
+    <Compile Include="ViewModels\EngineViewModel.cs" />
     <Compile Include="ViewModels\QueryOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ResultList.cs" />
@@ -231,7 +233,6 @@
     <Content Include="Content\Site.less" />
     <None Include="Scripts\Lib\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\ViewModel\AuthorIndexViewModel.js" />
-    <Content Include="Scripts\ViewModel\AuthorViewModel.js" />
     <Content Include="Scripts\Lib\bootstrap.js" />
     <Content Include="Scripts\Lib\bootstrap.min.js" />
     <Content Include="Scripts\Lib\jquery-1.9.1.js" />
@@ -251,6 +252,7 @@
     <Content Include="Scripts\Lib\modernizr-2.6.2.js" />
     <Content Include="Scripts\Lib\_references.js" />
     <Content Include="Scripts\ViewModel\PagingService.js" />
+    <Content Include="Scripts\ViewModel\VehicleViewModel.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -267,6 +269,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Vehicles\Form.cshtml" />
     <Content Include="Views\Vehicles\Index.cshtml" />
+    <Content Include="Views\Engines\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,7 +296,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>9055</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8216/</IISUrl>
+          <IISUrl>http://localhost:3333</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -30,6 +30,6 @@ namespace Slime.ViewModels
         public Rank Rank { get; set; }
 
         [JsonProperty(PropertyName = "engines")]
-        public virtual ICollection<Engine> Engines { get; set; }
+        public virtual ICollection<EngineViewModel> Engines { get; set; }
     }
 }
