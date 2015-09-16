@@ -9,7 +9,9 @@
         id: vehicle.id,
         name: ko.observable(vehicle.name),
         fp: ko.observable(vehicle.fp),
-        dr: ko.observable(vehicle.dr)
+        dr: ko.observable(vehicle.dr),
+        rank: ko.observable(vehicle.dr),
+        engines: ko.observableArray(vehicle.engines)
     };
 
     self.submit = function (form) {

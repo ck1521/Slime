@@ -34,10 +34,14 @@ namespace Slime.Controllers
             return View(AutoMapper.Mapper.Map<List<Vehicle>, List<VehicleViewModel>>(vehicles));
         }
 
-        //  GET: /Authors/Create
+        //  GET: /Vehicles/Create
         public ActionResult Create()
         {
-            return View("Form", new VehicleViewModel());
+            AutoMapper.Mapper.CreateMap<Engine, EngineViewModel>();
+
+            List<EngineViewModel> evms = AutoMapper.Mapper.Map<List<Engine>, List<EngineViewModel>>(vs.GetAllEngines());
+
+            return View("Form", new VehicleViewModel() { Engines = evms });
         }
 
         [HttpPost]
@@ -53,7 +57,7 @@ namespace Slime.Controllers
             return View(vehicle);
         }
 
-        //  GET: /Authors/Detail/id
+        //  GET: /Vehicles/Detail/id
         public ActionResult Detail(int? id)
         {
             if (id == null)

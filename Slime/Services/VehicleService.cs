@@ -10,7 +10,7 @@ using System.Data.Entity;
 
 namespace Slime.Services
 {
-    public class VehicleService :   IDisposable
+    public class VehicleService :  IDisposable
     {
         private VehicleContext db = new VehicleContext();
 
@@ -57,6 +57,13 @@ namespace Slime.Services
         public void Dispose()
         {
             db.Dispose();
+        }
+
+        public List<Engine> GetAllEngines()
+        {
+            return db.Engines.Where(e => e.Stage == Stage.Low)
+                .Select(e => new { e.Id, e.Name }).AsEnumerable()
+                .Select(x => new Engine { Id = x.Id, Name = x.Name }).ToList();
         }
     }
 }

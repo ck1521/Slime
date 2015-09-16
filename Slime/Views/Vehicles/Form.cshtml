@@ -43,7 +43,7 @@
                     @Html.ValidationMessageFor(m => m.DR, "", new { @class = "text-danger" })
                 </div>
 
-                <select class="form-control" data-bind="options:engines, optionsText:'name', optionsValue:'Id'">
+                <select class="form-control" data-bind="options:vehicle.engines, optionsText:'name', optionsValue:'id'">
                 </select>
 
                 <input type="submit" class="btn btn-default" value="Create" data-bind="visible:!sending()" />

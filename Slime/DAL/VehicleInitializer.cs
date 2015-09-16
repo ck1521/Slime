@@ -15,12 +15,14 @@ namespace Slime.DAL
             {
                 Name = "TestEng",
                 Mobility = 123,
+                Stage = Stage.Low,
             };
 
             var engine2 = new Engine()
             {
                 Name = "Breaking",
                 Mobility = 20,
+                Stage = Stage.Low,
             };
 
             var vehicles = new List<Vehicle>

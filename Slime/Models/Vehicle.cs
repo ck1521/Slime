@@ -18,11 +18,4 @@ namespace Slime.Models
         public int AP { get; set; }
         public Engine T1Engine { get; set; }
     }
-
-    public enum Rank
-    {
-        Blue,
-        Purple,
-        Gold
-    }
 }

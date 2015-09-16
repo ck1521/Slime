@@ -31,5 +31,6 @@ namespace Slime.ViewModels
 
         [JsonProperty(PropertyName = "engines")]
         public virtual ICollection<EngineViewModel> Engines { get; set; }
+
     }
 }

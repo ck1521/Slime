@@ -24,9 +24,9 @@ namespace Slime
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //var bookContext = new BookContext();
-            //Database.SetInitializer(new BookInitializer());
-            //bookContext.Database.Initialize(true);
+            var vehicleContext = new VehicleContext();
+            Database.SetInitializer(new VehicleInitializer());
+            vehicleContext.Database.Initialize(true);
         }
     }
 }

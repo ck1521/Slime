@@ -12,5 +12,6 @@ namespace Slime.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Mobility { get; set; }
+        public Stage Stage { get; set; }
     }
 }
