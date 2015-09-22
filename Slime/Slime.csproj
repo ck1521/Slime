@@ -139,6 +139,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\EnginesController.cs" />
+    <Compile Include="Controllers\EnginesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="DAL\VehicleContext.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Models\Engine.cs" />
     <Compile Include="Models\Hull.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Services\EngineService.cs" />
     <Compile Include="Services\QueryUtility.cs" />
     <Compile Include="Services\VehicleService.cs" />
     <Compile Include="ViewModels\EngineViewModel.cs" />
@@ -252,6 +255,7 @@
     <Content Include="Scripts\Lib\knockout-3.3.0.js" />
     <Content Include="Scripts\Lib\modernizr-2.6.2.js" />
     <Content Include="Scripts\Lib\_references.js" />
+    <Content Include="Scripts\ViewModel\EngineIndexViewModel.js" />
     <Content Include="Scripts\ViewModel\PagingService.js" />
     <Content Include="Scripts\ViewModel\VehicleViewModel.js" />
     <Content Include="Web.config" />
@@ -274,7 +278,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Api\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

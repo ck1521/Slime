@@ -1,6 +1,9 @@
-﻿@using Slime.Extensions
-
+﻿@using Slime.ViewModels
+@using Slime.Extensions
+@model ResultList<VehicleViewModel>
 @{
+    ViewBag.Title = "Engines";
+    var queryOptions = Model.QueryOptions;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -46,3 +49,16 @@
             Click @Html.ActionLink("here", "Create") to create one.
     </div>
 </div>
+
+@section scripts
+{
+    @Scripts.Render(
+    "/Scripts/ViewModel/PagingService.js",
+    "/Scripts/ViewModel/AuthorIndexViewModel.js")
+    <script>
+        var viewModel = new AuthorIndexViewModel(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+

@@ -1,5 +1,6 @@
-﻿@using Slime.Extensions
-
+﻿@using Slime.ViewModels
+@using Slime.Extensions
+@model ResultList<EngineViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,19 +8,21 @@
 <div class="col-md-8 col-md-offset-2">
     <h2>Engines</h2>
     <p>
-        @Html.ActionLink("Insert New", "Create");
+        @Html.ActionLink("Insert New", "Create")
     </p>
-    <div style="display: none" data-bind="visible:pagingService.entites().length > 0">
+    <div style="display: none" data-bind="visible: pagingService.entities().length > 0">
         <table class="table table-bordered table-striped">
             <tr>
                 <th></th>
                 <th></th>
                 <th></th>
+                <th>Actions</th>
             </tr>
             <tbody data-bind="foreach:pagingService.entities">
                 <tr>
                     <td data-bind="text:name"></td>
                     <td data-bind="text:mobility"></td>
+                    <td data-bind="text:stage"></td>
                     <td>
                         <a data-bind="attr: {href: '@Url.Action("Details")/' + id}"
                     class="btn btn-info">Details</a>
@@ -40,7 +43,18 @@
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         </button>
-        There are no vehicles to display.
+        There are no engines to display.
             Click @Html.ActionLink("here", "Create") to create one.
     </div>
 </div>
+
+@section scripts
+{
+        @Scripts.Render(
+    "/Scripts/ViewModel/PagingService.js",
+    "/Scripts/ViewModel/EngineIndexViewModel.js")
+    <script>
+        var viewModel = new EngineIndexViewModel(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(viewModel);
+    </script>
+}
